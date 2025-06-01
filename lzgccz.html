@@ -1,0 +1,106 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+     <title>全国特种设备公示信息查询平台</title>
+<!-- jstree样式 -->
+<link rel="stylesheet" href="/info-pub/static/assets/lib/jsTree/style.min.css">
+<link rel="stylesheet" href="/info-pub/static/assets/lib/layui2.4.3/css/layui.css">
+<link rel="stylesheet" href="/info-pub/static/assets/lib/layui2.4.3/css/modules/layer/default/layer.css">
+<link rel="stylesheet" href="/info-pub/static/css/hussar_font.css">
+<link rel="stylesheet" href="/info-pub/static/css/hussar.css"><!--公共layui覆盖样式-->
+<link rel="shortcut icon" href="/info-pub/static/favicon.ico" type="image/x-icon" />
+<link rel="stylesheet" href="/info-pub/static/css/themes/default/hussar.css">
+<!-- 自定义layui模块 -->
+<script type="text/javascript">
+    hussar_path="/info-pub";
+    theme = "";
+</script>
+<script src="/info-pub/static/assets/lib/layui2.4.3/layui.js"></script>
+<script src="/info-pub/static/assets/lib/layui2.4.3/layui.extend.js"></script>
+<script src="/info-pub/static/js/common/decode.js"></script>
+<script src="/info-pub/static/js/common/jsencrypt.min.js"></script>
+<script src="/info-pub/static/js/common/hussar_skin.js"></script><!-- bootstrap样式&js start-->
+<script src="/info-pub/static/assets/lib/bootstrap-table-edit/xlsx.core.min.js"></script>
+<link rel="stylesheet" href="/info-pub/static/assets/lib/bootstrap-table/bootstrap-table.min.css">
+<link rel="stylesheet" href="/info-pub/static/assets/lib/bootstrap/bootstrap.min.css">
+<link rel="stylesheet" href="/info-pub/static/assets/lib/bootstrap-table-edit/bootstrap-editable.css">
+<link rel="stylesheet" href="/info-pub/static/assets/lib/jquery-ui/jquery-ui.min.css">
+<script src="/info-pub/static/assets/lib/jquery/jquery1.11.0.js"></script>
+<link rel="stylesheet" href="/info-pub/static/assets/lib/bootstrap-table-edit/dragtable.css">
+<!-- bootstrap样式&js end-->
+    <!--[if lt IE 9]>
+    <script src="http://cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="http://cdn.bootcss.com/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+    <link href="/info-pub/static/sliderVCode/css/slide.css" rel="stylesheet" type="text/css" />
+    <link href="/info-pub/static/infoPub/pub/newUI/common-mobile.css" rel="stylesheet" type="text/css" />
+     <style type="text/css">
+    .error-info{text-align:center; font-size:1.5em;}
+    .title{text-align:center; font-weight:bold; font-size:1.2em;}    
+    .item-line{width:98%; margin:auto; font:1em; margin-top:10px; margin-bottom:10px;}
+    .item-line span{display:inline-block;}
+    .item-line .name{display:inline-block; margin-right:10px; font-weight:bold;}
+    .ecert-bt{width:50%; margin:auto;  text-align:center; padding-top:10px; padding-bottom:10px; background-color:#dedede; cursor:pointer;}
+    </style>
+</head>
+<body>
+<div id="header-top-line">
+<div id="header-top-container"><div id="header-top-calendear" style="float:left;">2025年06月01日 星期日</div>
+
+</div>
+</div>
+<div style="clear:both;"></div>
+<div id="header-banner-line">
+<div id="header-banner-container"> 
+  <blockquote>
+    <p><img src="https://img.alicdn.com/imgextra/i2/2217657706395/O1CN01hCL8SO1x6xtwl7rVF_!!2217657706395.jpg" style="width:100%; height:100%;" />
+    </p>
+  </blockquote>
+</div>
+</div>
+<input type="hidden" id="qrCode" value="d09f1b24242849479fafe9cecffa3007" /> />
+
+ <div class="title">全国特种设备信息公示查询平台证书核验结果</div>
+  <div class="item-line"><span class="name">证书编号：</span><span>51032219730125129X</span></div>
+  <div class="item-line"><span class="name">持证人员：</span>刘真贵</div>
+  <div class="item-line"><span class="name">证书类别：</span></div>
+  <div class="item-line"><span>特种设备作业人员</span></div>
+  <div class="item-line"><span class="name">考核单位：</span></div>
+  <div class="item-line"><span></span></div>
+  <div class="item-line"><span class="name">考核日期：</span><span></span></div>
+  <div class="item-line"><span class="name">批准日期：</span><span>2025-05-16</span></div>
+  <div class="item-line"><span class="name">有效日期：</span><span>2025-06-01至2029-06-30</span></div>
+  <div class="item-line"><span class="name">发证机关：</span></div>
+  <div class="item-line"><span>自贡市市场监督管理局</span></div>
+  <div class="item-line"><span class="name">持证项目：</span></div>
+  <div class="item-line"><span>叉车司机</span></div>
+
+<div id="certListContiner"></div>
+
+<script type="text/html" id="tplCertList">
+{{#  layui.each(d.list, function(index, item){ }}
+<hr/>
+<div class="item-line"><span class="name">证书编号：</span><span>{{item.zsbh}}</span></div>
+  <div class="item-line"><span class="name">持证人员：</span><span>{{item.ryxm}}</span></div>
+  <div class="item-line"><span class="name">证书类别：</span></div>
+  <div class="item-line"><span>{{item.zslb}}</span></div>
+  <div class="item-line"><span class="name">考核单位：</span></div>
+  <div class="item-line"><span>{{item.khdw}}</span></div>
+  <div class="item-line"><span class="name">考核日期：</span><span>{{item.khrq}}</span></div>
+  <div class="item-line"><span class="name">批准日期：</span><span>{{item.pzrq}}</span></div>
+  <div class="item-line"><span class="name">有效日期：</span><span>{{item.yxrqs}}至{{item.yxrqz}}</span></div>
+  <div class="item-line"><span class="name">发证机关：</span></div>
+  <div class="item-line"><span>{{item.fzjg}}</span></div>
+  <div class="item-line"><span class="name">持证项目：</span></div>
+  <div class="item-line"><span>{{item.czxm}}</span></div>
+ {{#  }); }}
+</script>
+</body>
+<script type="text/javascript">
+    document.write('<script src="/info-pub/static/infoPub/pub/query/qc_person.js?r=' + new Date().getTime() + '"><' + '/script>');
+</script>
+</html>
