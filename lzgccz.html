@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-     <title>A全国特种设备公示信息查询平台</title>
+     <title>全国特种设备公示信息查询平台</title>
 <!-- jstree样式 -->
 <link rel="stylesheet" href="/info-pub/static/assets/lib/jsTree/style.min.css">
 <link rel="stylesheet" href="/info-pub/static/assets/lib/layui2.4.3/css/layui.css">
@@ -48,11 +48,25 @@
     </style>
 </head>
 <body>
-<div id="header-top-line">
-<div id="header-top-container"><div id="header-top-calendear" style="float:left;">2025年06月01日 星期日</div>
+ <div id="currentDate"></div>
 
-</div>
-</div>
+    <script>
+        // 获取当前日期
+        const now = new Date();
+        
+        // 星期几的中文名称数组
+        const weekdays = ["星期日", "星期一", "星期二", "星期三", "星期四", "星期五", "星期六"];
+        
+        // 格式化日期
+        const year = now.getFullYear();
+        const month = now.getMonth() + 1; // 月份从0开始，所以要加1
+        const day = now.getDate();
+        const weekday = weekdays[now.getDay()];
+        
+        // 显示日期
+        document.getElementById("currentDate").innerHTML = 
+            `${year}年${month}月${day}日 ${weekday}`;
+    </script>	
 <div style="clear:both;"></div>
 <div id="header-banner-line">
 <div id="header-banner-container"> 
